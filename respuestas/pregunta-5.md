@@ -1,0 +1,1 @@
+MATCH (p:Persona) OPTIONAL MATCH (p)-[:AMIGO_DE]-(a:Persona) WITH p, count(a) AS numAmigos WITH collect({persona: p, amigos: numAmigos}) AS listaPersonas, avg(numAmigos) AS mediaGlobal UNWIND listaPersonas AS item WITH item.persona AS p, item.amigos AS numAmigos, mediaGlobal WHERE numAmigos > mediaGlobal RETURN p.nombre AS Persona, numAmigos AS Amigos, mediaGlobal AS MediaGlobal;

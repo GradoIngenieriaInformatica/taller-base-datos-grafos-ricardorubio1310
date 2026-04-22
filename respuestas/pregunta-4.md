@@ -1,0 +1,1 @@
+MATCH (p:Persona) OPTIONAL MATCH (p)-[:PARTICIPA_EN]->(pr:Proyecto) RETURN p.nombre, count(pr) AS NumeroProyectos;
